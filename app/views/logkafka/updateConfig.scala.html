@@ -12,7 +12,7 @@ errorOrForm: kafka.manager.ApiError \/ (Form[models.form.UpdateLogkafkaConfig], 
 @import controllers.routes
 
 @theMenu = {
-    @views.html.navigation.clusterMenu(cluster,"Logkafka","Update Config",menus.clusterMenus(cluster)(
+    @views.html.navigation.clusterMenu(cluster,"Logkafka","更新配置",menus.clusterMenus(cluster)(
         errorOrForm.toOption.map(_._2.clusterFeatures).getOrElse(kafka.manager.features.ClusterFeatures.default)))
 }
         
@@ -20,7 +20,7 @@ errorOrForm: kafka.manager.ApiError \/ (Form[models.form.UpdateLogkafkaConfig], 
     @b3.form(routes.Logkafka.handleUpdateConfig(cluster, logkafka_id, log_path)) {
         <table class="table">
             <thead>
-            <tr><th>Update Config</th></tr>
+            <tr><th>更新配置</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -35,18 +35,18 @@ errorOrForm: kafka.manager.ApiError \/ (Form[models.form.UpdateLogkafkaConfig], 
                 </tr>
             </tbody>
         </table>
-        @b3.submit('class -> "submit-button btn btn-primary"){ Update Config }
-        <a href="@routes.Logkafka.logkafka(cluster,logkafka_id,log_path)" class="cancel-button btn btn-default" role="button">Cancel</a>
+        @b3.submit('class -> "submit-button btn btn-primary"){ 更新配置 }
+        <a href="@routes.Logkafka.logkafka(cluster,logkafka_id,log_path)" class="cancel-button btn btn-default" role="button">取消</a>
     }
 }
 
 @main(
-    "Update Config",
+    "更新配置",
     menu = theMenu,
-    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withNamedViewAndClusterAndLogkafka("Logkafka View",cluster,logkafka_id,log_path,"Update Config"))) {
+    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withNamedViewAndClusterAndLogkafka("Logkafka视图",cluster,logkafka_id,log_path,"更新配置"))) {
     <div class="col-md-6 un-pad-me">
         <div class="panel panel-default">
-            <div class="panel-heading"><h3><button type="button" class="btn btn-link" onclick="goBack()"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>Update Config</h3></div>
+            <div class="panel-heading"><h3><button type="button" class="btn btn-link" onclick="goBack()"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>更新配置</h3></div>
             <div class="panel-body">
                 @errorOrForm.fold( views.html.errors.onApiError(_), t => renderForm(t._1))
             </div>

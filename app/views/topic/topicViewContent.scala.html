@@ -86,7 +86,7 @@
         @views.html.common.brokerMetrics(topicIdentity.metrics)
     } else {
         <div class="alert alert-info" role="alert">
-            Please enable JMX polling <a href="@routes.Cluster.updateCluster(cluster)" class="alert-link">here</a>.
+            请启用 JMX 轮询 <a href="@routes.Cluster.updateCluster(cluster)" class="alert-link">点击这里</a>.
         </div>
     }
 }
@@ -105,7 +105,7 @@
         </table>
     } else {
         <div class="alert alert-info" role="alert">
-            Please enable consumer polling <a href="@routes.Cluster.updateCluster(cluster)" class="alert-link">here</a>.
+            请启用消费者轮询 <a href="@routes.Cluster.updateCluster(cluster)" class="alert-link">点击这里</a>.
         </div>
     }
 }
@@ -114,61 +114,61 @@
 <div class="row">
     <div class="col-md-5">
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Topic Summary</h4></div>
+            <div class="panel-heading"><h4>Topic概要</h4></div>
             <table class="table">
                 <tbody>
                 <tr>
-                    <td>Replication</td>
+                    <td>副本因子</td>
                     <td>@topicIdentity.replicationFactor</td>
                 <tr>
-                    <td>Number of Partitions</td>
+                    <td>分区数</td>
                     <td>@topicIdentity.partitions</td>
                 </tr>
                 <tr>
-                    <td><span title="Represents the theoretical size of the topic">Sum of partition offsets</span></td>
+                    <td><span title="topic理论大小">分区偏移和</span></td>
                     <td>@topicIdentity.summedTopicOffsets</td>
                 </tr>
                 <tr>
-                    <td>Total number of Brokers</td>
+                    <td>总Brokers数</td>
                     <td>@topicIdentity.numBrokers</td>
                 </tr>
                 <tr>
-                    <td>Number of Brokers for Topic</td>
+                    <td>Topic Brokers数</td>
                     <td>@topicIdentity.topicBrokers</td>
                 </tr>
                 <tr>
-                    <td><span title="Percentage of replicas leader being preferred (first in the list of replicas)">Preferred Replicas %</td>
+                    <td><span title="Percentage of replicas leader being preferred (first in the list of replicas)">首选副本 %</td>
                     <td class="@getPreferredReplicasLevel(topicIdentity.preferredReplicasPercentage)">
                         @topicIdentity.preferredReplicasPercentage
                     </td>
                 </tr>
                 <tr>
-                    <td><span title="Percentage of brokers having more partitions than the average">Brokers Skewed %</span></td>
+                    <td><span title="Percentage of brokers having more partitions than the average">Brokers偏差 %</span></td>
                     <td class="@getBrokersSkewedLevel(topicIdentity.brokersSkewPercentage)">
                         @topicIdentity.brokersSkewPercentage
                     </td>
                 </tr>
                 <tr>
-                    <td><span title="Percentage of brokers having more partitions as leader than the average">Brokers Leader Skewed %</span></td>
+                    <td><span title="Percentage of brokers having more partitions as leader than the average">Brokers Leader偏差 %</span></td>
                     <td class="@getBrokersLeaderSkewedLevel(topicIdentity.brokersLeaderSkewPercentage)">
                         @topicIdentity.brokersLeaderSkewPercentage
                     </td>
                 </tr>
                 <tr>
-                    <td><span title="Percentage of cluster brokers having partitions from the topic">Brokers Spread %</span></td>
+                    <td><span title="Percentage of cluster brokers having partitions from the topic">Brokers速度 %</span></td>
                     <td class="@getBrokersSpreadLevel(topicIdentity.brokersSpreadPercentage)">
                         @topicIdentity.brokersSpreadPercentage
                     </td>
                 </tr>
                 <tr>
-                    <td><span title="Percentage of partitions having a missing replica">Under-replicated %</span></td>
+                    <td><span title="Percentage of partitions having a missing replica">复制中 %</span></td>
                     <td class="@getUnderReplicatedLevel(topicIdentity.underReplicatedPercentage)">
                         @topicIdentity.underReplicatedPercentage
                     </td>
                 </tr>
                 @if(topicIdentity.clusterContext.config.jmxEnabled && topicIdentity.clusterContext.config.displaySizeEnabled){
                 <tr>
-                    <td>Leader Size</td>
+                    <td>Leader大小</td>
                     <td>@topicIdentity.size</td>
                 </tr>
                 }
@@ -177,7 +177,7 @@
             @if(!topicIdentity.config.isEmpty) {
             <table class="table">
                 <thead>
-                <th>Config</th><th>Value</th>
+                <th>配置项</th><th>值</th>
                 </thead>
                 <tbody>
                 @for( (k,v) <- topicIdentity.config) {
@@ -191,20 +191,20 @@
             }
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Metrics</h4></div>
+            <div class="panel-heading"><h4>监控指标</h4></div>
             @renderTopicMetrics
         </div>
     </div>
     <div class="col-md-7">
         @features.app(features.KMTopicManagerFeature) {
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Operations</h4></div>
+            <div class="panel-heading"><h4>操作</h4></div>
             <table class="table">
                 <tbody>
                 <tr>
                     @if(topicIdentity.clusterContext.clusterFeatures.features(kafka.manager.features.KMDeleteTopicFeature)) {
                     <td>
-                        <a href="@routes.Topic.confirmDeleteTopic(cluster,topic)" class='btn btn-primary btn-block'>Delete Topic</a>
+                        <a href="@routes.Topic.confirmDeleteTopic(cluster,topic)" class='btn btn-primary btn-block'>删除Topic</a>
                     </td>
                     }
                     @features.app(features.KMReassignPartitionsFeature) {
@@ -215,34 +215,34 @@
                                     <fieldset>
                                         <input type="hidden" name="operation" value="force">
                                         <input type="hidden" name="brokers" value="@Seq()">
-                                        @b3.submit('class -> "btn btn-primary btn-block"){ Force Reassign Partitions }
+                                        @b3.submit('class -> "btn btn-primary btn-block"){ 强制重新分配分区 }
                                     </fieldset>
                                 }
                                 case _ => {
                                     <fieldset>
                                         <input type="hidden" name="operation" value="run">
                                         <input type="hidden" name="brokers" value="@Seq()">
-                                        @b3.submit('class -> "btn btn-primary btn-block"){ Reassign Partitions }
+                                        @b3.submit('class -> "btn btn-primary btn-block"){ 重新分配分区 }
                                     </fieldset>
                                 }
                             }
                         }
                     </td>
                     <td>
-                        <a href="@routes.ReassignPartitions.confirmAssignment(cluster,topic)" class="submit-button btn btn-primary" role="button">Generate Partition Assignments</a>
+                        <a href="@routes.ReassignPartitions.confirmAssignment(cluster,topic)" class="submit-button btn btn-primary" role="button">生成分区作业</a>
                     </td>
                     }
                 </tr>
                 <tr>
                     <td>
-                        <a href="@routes.Topic.addPartitions(cluster,topic)" class="submit-button btn btn-primary" role="button">Add Partitions</a>
+                        <a href="@routes.Topic.addPartitions(cluster,topic)" class="submit-button btn btn-primary" role="button">添加分区</a>
                     </td>
                     <td>
-                        <a href="@routes.Topic.updateConfig(cluster,topic)" class="submit-button btn btn-primary" role="button">Update Config</a>
+                        <a href="@routes.Topic.updateConfig(cluster,topic)" class="submit-button btn btn-primary" role="button">更新配置</a>
                     </td>
                     @features.app(features.KMReassignPartitionsFeature) {
                     <td>
-                        <a href="@routes.ReassignPartitions.manualAssignments(cluster, topic)" class="submit-button btn btn-primary" role="button">Manual Partition Assignments</a>
+                        <a href="@routes.ReassignPartitions.manualAssignments(cluster, topic)" class="submit-button btn btn-primary" role="button">手动分区作业</a>
                     </td>
                     }
                 </tr>
@@ -251,10 +251,10 @@
         </div>
         }
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Partitions by Broker</h4></div>
+            <div class="panel-heading"><h4>Broker的分区</h4></div>
             <table class="table" style="table-layout: fixed; width: 100%">
                 <thead>
-                <tr><th>Broker</th><th># of Partitions</th><th># as Leader</th><th>Partitions</th><th><span title="Broker has more partitions than the average">Skewed?</span></th><th><span title="Broker has more partitions as leaders than the average">Leader Skewed?</span></th></tr>
+                <tr><th>Broker</th><th>分区数</th><th>Leader分区数</th><th>分区</th><th><span title="Broker分区超过平均值">偏差?</span></th><th><span title="作为Leander的Broker的分区数超过平均值">Leader偏差?</span></th></tr>
                 </thead>
                 <tbody>
                 @for(btp <- topicIdentity.partitionsByBroker) {
@@ -275,7 +275,7 @@
             </table>
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Consumers consuming from this topic</h4></div>
+            <div class="panel-heading"><h4>该topic的消费者</h4></div>
             @renderConsumerList
         </div>
     </div>
@@ -283,19 +283,19 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Partition Information</h4></div>
+            <div class="panel-heading"><h4>分区信息</h4></div>
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Partition</th>
-                    <th>Latest Offset</th>
+                    <th>分区</th>
+                    <th>最新Offset</th>
                     <th>Leader</th>
-                    <th>Replicas</th>
-                    <th>In Sync Replicas</th>
-                    <th>Preferred Leader?</th>
-                    <th>Under Replicated?</th>
+                    <th>副本</th>
+                    <th>在同步副本</th>
+                    <th>首选Leader?</th>
+                    <th>复制中?</th>
                     @if(topicIdentity.clusterContext.config.jmxEnabled && topicIdentity.clusterContext.config.displaySizeEnabled){
-                    <th>Leader Size</th>
+                    <th>Leader大小</th>
                     }
                 </tr>
                 </thead>

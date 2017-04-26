@@ -160,10 +160,10 @@ class Logkafka (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaMana
           cl.configs.filter(_.value.isDefined).foreach(c => props.setProperty(c.name, c.value.get))
           kafkaManager.createLogkafka(clusterName, cl.logkafka_id, cl.log_path, props).map { errorOrSuccess =>
             Ok(views.html.common.resultOfCommand(
-              views.html.navigation.clusterMenu(clusterName, "Logkafka", "Create", menus.clusterMenus(clusterName)),
-              models.navigation.BreadCrumbs.withNamedViewAndCluster("Logkafkas", clusterName, "Create Logkafka"),
+              views.html.navigation.clusterMenu(clusterName, "Logkafka", "创建", menus.clusterMenus(clusterName)),
+              models.navigation.BreadCrumbs.withNamedViewAndCluster("Logkafka列表", clusterName, "创建Logkafka"),
               errorOrSuccess,
-              "Create Logkafka",
+              "创建Logkafka",
               FollowLink("Go to logkafka id view.", routes.Logkafka.logkafka(clusterName, cl.logkafka_id, cl.log_path).toString()),
               FollowLink("Try again.", routes.Logkafka.createLogkafka(clusterName).toString())
             ))
@@ -186,10 +186,10 @@ class Logkafka (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaMana
         deleteLogkafka => {
           kafkaManager.deleteLogkafka(clusterName, deleteLogkafka.logkafka_id, deleteLogkafka.log_path).map { errorOrSuccess =>
             Ok(views.html.common.resultOfCommand(
-              views.html.navigation.clusterMenu(clusterName, "Logkafka", "Logkafka View", menus.clusterMenus(clusterName)),
-              models.navigation.BreadCrumbs.withNamedViewAndClusterAndLogkafka("Logkafka View", clusterName, logkafka_id, log_path, "Delete Logkafka"),
+              views.html.navigation.clusterMenu(clusterName, "Logkafka", "Logkafka视图", menus.clusterMenus(clusterName)),
+              models.navigation.BreadCrumbs.withNamedViewAndClusterAndLogkafka("Logkafka视图", clusterName, logkafka_id, log_path, "删除Logkafka"),
               errorOrSuccess,
-              "Delete Logkafka",
+              "删除Logkafka",
               FollowLink("Go to logkafka list.", routes.Logkafka.logkafkas(clusterName).toString()),
               FollowLink("Try again.", routes.Logkafka.logkafka(clusterName, logkafka_id, log_path).toString())
             ))
@@ -247,10 +247,10 @@ class Logkafka (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaMana
           updateLogkafkaConfig.configs.filter(_.value.isDefined).foreach(c => props.setProperty(c.name, c.value.get))
           kafkaManager.updateLogkafkaConfig(clusterName, updateLogkafkaConfig.logkafka_id, updateLogkafkaConfig.log_path, props).map { errorOrSuccess =>
             Ok(views.html.common.resultOfCommand(
-              views.html.navigation.clusterMenu(clusterName, "Logkafka", "Logkafka View", menus.clusterMenus(clusterName)),
-              models.navigation.BreadCrumbs.withNamedViewAndClusterAndLogkafka("Logkafka View", clusterName, logkafka_id, log_path, "Update Config"),
+              views.html.navigation.clusterMenu(clusterName, "Logkafka", "Logkafka视图", menus.clusterMenus(clusterName)),
+              models.navigation.BreadCrumbs.withNamedViewAndClusterAndLogkafka("Logkafka视图", clusterName, logkafka_id, log_path, "更新配置"),
               errorOrSuccess,
-              "Update Config",
+              "更新配置",
               FollowLink("Go to logkafka view.", routes.Logkafka.logkafka(clusterName, updateLogkafkaConfig.logkafka_id, updateLogkafkaConfig.log_path).toString()),
               FollowLink("Try again.", routes.Logkafka.updateConfig(clusterName, logkafka_id, log_path).toString())
             ))
@@ -267,10 +267,10 @@ class Logkafka (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaMana
       props.put("valid", true.toString);
       kafkaManager.updateLogkafkaConfig(clusterName, logkafka_id, log_path, props, false).map { errorOrSuccess =>
         Ok(views.html.common.resultOfCommand(
-          views.html.navigation.clusterMenu(clusterName, "Logkafka", "Logkafka View", menus.clusterMenus(clusterName)),
-          models.navigation.BreadCrumbs.withNamedViewAndClusterAndLogkafka("Logkafka View", clusterName, logkafka_id, log_path, "Update Config"),
+          views.html.navigation.clusterMenu(clusterName, "Logkafka", "Logkafka视图", menus.clusterMenus(clusterName)),
+          models.navigation.BreadCrumbs.withNamedViewAndClusterAndLogkafka("Logkafka视图", clusterName, logkafka_id, log_path, "更新配置"),
           errorOrSuccess,
-          "Enable Config",
+          "启用配置",
           FollowLink("Go to logkafka view.", routes.Logkafka.logkafka(clusterName, logkafka_id, log_path).toString()),
           FollowLink("Try again.", routes.Logkafka.updateConfig(clusterName, logkafka_id, log_path).toString())
         ))
@@ -285,10 +285,10 @@ class Logkafka (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaMana
       props.put("valid", false.toString);
       kafkaManager.updateLogkafkaConfig(clusterName, logkafka_id, log_path, props, false).map { errorOrSuccess =>
         Ok(views.html.common.resultOfCommand(
-          views.html.navigation.clusterMenu(clusterName, "Logkafka", "Logkafka View", menus.clusterMenus(clusterName)),
-          models.navigation.BreadCrumbs.withNamedViewAndClusterAndLogkafka("Logkafka View", clusterName, logkafka_id, log_path, "Update Config"),
+          views.html.navigation.clusterMenu(clusterName, "Logkafka", "Logkafka视图", menus.clusterMenus(clusterName)),
+          models.navigation.BreadCrumbs.withNamedViewAndClusterAndLogkafka("Logkafka视图", clusterName, logkafka_id, log_path, "更新配置"),
           errorOrSuccess,
-          "Disable Config",
+          "禁用配置",
           FollowLink("Go to logkafka view.", routes.Logkafka.logkafka(clusterName, logkafka_id, log_path).toString()),
           FollowLink("Try again.", routes.Logkafka.updateConfig(clusterName, logkafka_id, log_path).toString())
         ))

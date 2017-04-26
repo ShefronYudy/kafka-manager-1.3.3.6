@@ -16,7 +16,7 @@
     $(document).ready(function() {
         $('#logkafkas-table').DataTable(
                 {
-                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "所有"]]
                 }
         );
     } );
@@ -24,7 +24,7 @@
 }
 
 @main(
-    "Logkafka List",
+    "Logkafka列表",
     menu = theMenu,
     breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Logkafkas",cluster)),
     scripts=logkafkaScripts) {

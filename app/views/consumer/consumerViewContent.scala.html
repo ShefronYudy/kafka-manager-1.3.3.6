@@ -15,10 +15,10 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Consumed Topic Information</h4></div>
+            <div class="panel-heading"><h4>已消费Topic信息</h4></div>
             <table class="table">
                 <thead>
-                <tr><th>Topic</th><th>Partitions Covered %</th><th>Total Lag</th></tr>
+                <tr><th>Topic</th><th>分区覆盖率</th><th>总延迟</th></tr>
                 </thead>
                 <tbody>
                 @for((topic: String, state: kafka.manager.model.ActorModel.ConsumedTopicState) <- consumerIdentity.topicMap) {
@@ -27,7 +27,7 @@
                     <td class="@getTopicCoverage(state.percentageCovered)">
                         @state.percentageCovered
                     </td>
-                    <td>@state.totalLag.getOrElse("not available")</td>
+                    <td>@state.totalLag.getOrElse("不可用")</td>
                 </tr>
                 }
                 </tbody>

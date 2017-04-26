@@ -11,7 +11,7 @@
   errorLink: models.FollowLink)(implicit messages: play.api.i18n.Messages)
 
 @link(followLink: FollowLink) = {
-    <div class="alert alert-success" role="alert">Done!</div>
+    <div class="alert alert-success" role="alert">完成!</div>
     <div class="alert alert-info" role="alert">
         <a href="@followLink.url">@followLink.title</a>
     </div>

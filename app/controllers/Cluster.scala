@@ -233,9 +233,9 @@ class Cluster (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManag
           ).map { errorOrSuccess =>
             Ok(views.html.common.resultOfCommand(
               views.html.navigation.defaultMenu(),
-              models.navigation.BreadCrumbs.withView("Add Cluster"),
+              models.navigation.BreadCrumbs.withView("添加集群"),
               errorOrSuccess,
-              "Add Cluster",
+              "添加集群",
               FollowLink("Go to cluster view.",routes.Cluster.cluster(clusterConfig.name).toString()),
               FollowLink("Try again.",routes.Cluster.addCluster().toString())
             ))
@@ -254,9 +254,9 @@ class Cluster (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManag
             kafkaManager.enableCluster(c).map { errorOrSuccess =>
               Ok(views.html.common.resultOfCommand(
                 views.html.navigation.defaultMenu(),
-                models.navigation.BreadCrumbs.withViewAndCluster("Enable Cluster", c),
+                models.navigation.BreadCrumbs.withViewAndCluster("启用集群", c),
                 errorOrSuccess,
-                "Enable Cluster",
+                "启用集群",
                 FollowLink("Go to cluster list.", routes.Application.index().toString()),
                 FollowLink("Back to cluster list.", routes.Application.index().toString())
               ))
@@ -265,9 +265,9 @@ class Cluster (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManag
             kafkaManager.disableCluster(c).map { errorOrSuccess =>
               Ok(views.html.common.resultOfCommand(
                 views.html.navigation.defaultMenu(),
-                models.navigation.BreadCrumbs.withViewAndCluster("Disable Cluster", c),
+                models.navigation.BreadCrumbs.withViewAndCluster("禁用集群", c),
                 errorOrSuccess,
-                "Disable Cluster",
+                "禁用集群",
                 FollowLink("Back to cluster list.", routes.Application.index().toString()),
                 FollowLink("Back to cluster list.", routes.Application.index().toString())
               ))
@@ -276,9 +276,9 @@ class Cluster (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManag
             kafkaManager.deleteCluster(c).map { errorOrSuccess =>
               Ok(views.html.common.resultOfCommand(
                 views.html.navigation.defaultMenu(),
-                models.navigation.BreadCrumbs.withViewAndCluster("Delete Cluster", c),
+                models.navigation.BreadCrumbs.withViewAndCluster("删除集群", c),
                 errorOrSuccess,
-                "Delete Cluster",
+                "删除集群",
                 FollowLink("Back to cluster list.", routes.Application.index().toString()),
                 FollowLink("Back to cluster list.", routes.Application.index().toString())
               ))
@@ -301,9 +301,9 @@ class Cluster (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManag
             ).map { errorOrSuccess =>
               Ok(views.html.common.resultOfCommand(
                 views.html.navigation.defaultMenu(),
-                models.navigation.BreadCrumbs.withViewAndCluster("Update Cluster", c),
+                models.navigation.BreadCrumbs.withViewAndCluster("更新集群", c),
                 errorOrSuccess,
-                "Update Cluster",
+                "更新集群",
                 FollowLink("Go to cluster view.", routes.Cluster.cluster(clusterOperation.clusterConfig.name).toString()),
                 FollowLink("Try again.", routes.Cluster.updateCluster(c).toString())
               ))
@@ -311,7 +311,7 @@ class Cluster (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManag
           case Unknown(opString) =>
             Future.successful(Ok(views.html.common.resultOfCommand(
               views.html.navigation.defaultMenu(),
-              models.navigation.BreadCrumbs.withViewAndCluster("Unknown Cluster Operation", c),
+              models.navigation.BreadCrumbs.withViewAndCluster("未知集群操作", c),
               -\/(ApiError(s"Unknown operation $opString")),
               "Unknown Cluster Operation",
               FollowLink("Back to cluster list.", routes.Application.index().toString()),

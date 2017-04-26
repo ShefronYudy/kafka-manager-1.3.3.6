@@ -24,15 +24,15 @@
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Topic Summary</h4></div>
+            <div class="panel-heading"><h4>Topic概要</h4></div>
             <table class="table">
                 <tbody>
                 <tr>
-                    <td>Total Lag</td>
+                    <td>总延迟</td>
                     <td>@state.totalLag.getOrElse(" ")</td>
                 </tr>
                 <tr>
-                    <td>% of Partitions assigned to a consumer instance</td>
+                    <td>分配给消费者实例的分区占比</td>
                     <td class="@getTopicCoverage(state.percentageCovered)">@state.percentageCovered</td>
                 </tr>
                 </tbody>
@@ -46,7 +46,7 @@
             <div class="panel-heading"><h4><a href="@routes.Topic.topic(cluster,topic)">@topic</a></h4></div>
             <table class="table">
                 <thead>
-                <tr><th>Partition</th><th>LogSize</th><th>Consumer Offset</th><th>Lag</th><th>Consumer Instance Owner</th></tr>
+                <tr><th>分区</th><th>LogSize</th><th>消费者位置</th><th>Lag</th><th>消费者实例拥有者</th></tr>
                 </thead>
                 <tbody>
                 @for(tp:Int <- 0 until state.numPartitions) {

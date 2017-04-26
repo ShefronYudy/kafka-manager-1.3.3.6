@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-8">
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Logkafka Summary</h4></div>
+            <div class="panel-heading"><h4>Logkafka概要</h4></div>
             <table class="table">
                 <tbody>
                 <tr>
@@ -46,7 +46,7 @@
     </div>
     <div class="col-md-4">
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Operations</h4></div>
+            <div class="panel-heading"><h4>操作</h4></div>
             <table class="table">
                 <tbody>
                 <tr>
@@ -55,14 +55,14 @@
                         <fieldset>
                             @b3.hidden("logkafka_id", logkafka_id)
                             @b3.hidden("log_path", log_path)
-                            @b3.submit('class -> "submit-button btn btn-primary"){ Delete Logkafka }
+                            @b3.submit('class -> "submit-button btn btn-primary"){ 删除 Logkafka }
                         </fieldset>
                         }
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <a href="@routes.Logkafka.updateConfig(cluster,logkafka_id,log_path)" class="submit-button btn btn-primary" role="button">Update Config</a>
+                        <a href="@routes.Logkafka.updateConfig(cluster,logkafka_id,log_path)" class="submit-button btn btn-primary" role="button">更新配置</a>
                     </td>
                 </tr>
                 </tbody>

@@ -7,7 +7,7 @@
 )(implicit af: features.ApplicationFeatures, messages: play.api.i18n.Messages, menus: models.navigation.Menus)
 
 @theMenu = {
-    @views.html.navigation.clusterMenu(cluster,"Topic","List",menus.clusterMenus(cluster)(
+    @views.html.navigation.clusterMenu(cluster,"主题","列表",menus.clusterMenus(cluster)(
         errorOrTopics.toOption.map(_.clusterContext.clusterFeatures).getOrElse(kafka.manager.features.ClusterFeatures.default)))
 }
 
@@ -20,7 +20,7 @@
                 columnDefs: [
                     { type: 'file-size', targets: 7 }
                 ],
-                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "所有"]]
             } );
         } );
         </script>
@@ -29,7 +29,7 @@
         $(document).ready(function() {
             $('#topics-table').DataTable(
                     {
-                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "所有"]]
                     }
             );
         } );
@@ -38,26 +38,26 @@
 }
 
 @main(
-    "Topic List",
+    "Topic列表",
     menu = theMenu,
-    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Topics",cluster)),
+    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Topic列表",cluster)),
     scripts=topicScripts) {
     <div class="col-md-12">
         @features.app(features.KMTopicManagerFeature) {
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Operations</h4></div>
+            <div class="panel-heading"><h4>操作</h4></div>
             <table class="table">
                 <tr>
                     @features.app(features.KMReassignPartitionsFeature) {
                     <td>
-                        <a href="@routes.ReassignPartitions.confirmMultipleAssignments(cluster)" class="submit-button btn btn-primary" role="button">Generate Partition Assignments</a>
+                        <a href="@routes.ReassignPartitions.confirmMultipleAssignments(cluster)" class="submit-button btn btn-primary" role="button">生成分区作业</a>
                     </td>
                     <td>
-                        <a href="@routes.ReassignPartitions.runMultipleAssignments(cluster)" class="submit-button btn btn-primary" role="button">Run Partition Assignments</a>
+                        <a href="@routes.ReassignPartitions.runMultipleAssignments(cluster)" class="submit-button btn btn-primary" role="button">运行分区作业</a>
                     </td>
                     }
                     <td>
-                        <a href="@routes.Topic.addPartitionsToMultipleTopics(cluster)" class="submit-button btn btn-primary" role="button">Add Partitions</a>
+                        <a href="@routes.Topic.addPartitionsToMultipleTopics(cluster)" class="submit-button btn btn-primary" role="button">添加分区</a>
                     </td>
                 </tr>
                 </tbody>
@@ -67,7 +67,7 @@
     </div>
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading"><h3>Topics</h3></div>
+            <div class="panel-heading"><h3>Topic列表</h3></div>
             @errorOrTopics.fold( 
                 views.html.errors.onApiError(_),
                 tl => views.html.topic.topicListContent(

@@ -8,7 +8,7 @@
 
             <table class="table">
                 <thead>
-                <tr><th>Active</th><th>Operations</th><th>Version</th></tr>
+                <tr><th>活跃集群</th><th>操作</th><th>版本</th></tr>
                 </thead>
                 <tbody>
                 @for(cluster <- clusters) {
@@ -24,13 +24,13 @@
                         <div class="btn-group-horizontal" role="group" aria-label="...">
                         @features.app(features.KMClusterManagerFeature) {
                             @if(cluster.enabled) {
-                                <a href="@routes.Cluster.updateCluster(cluster.name)" class="btn btn-default ops-button" role="button">Modify</a>
+                                <a href="@routes.Cluster.updateCluster(cluster.name)" class="btn btn-default ops-button" role="button">修改</a>
                                 @b3.form(routes.Cluster.handleUpdateCluster(cluster.name)) {
                                 <input type="hidden" name="name" value="@cluster.name">
                                 <input type="hidden" name="kafkaVersion" value="@cluster.version.toString">
                                 <input type="hidden" name="zkHosts" value="@cluster.curatorConfig.zkConnect">
                                 <input type="hidden" name="operation" value="Disable">
-                                @b3.submit('class -> "btn btn-warning ops-button"){ Disable }
+                                @b3.submit('class -> "btn btn-warning ops-button"){ 禁用 }
                                 }
                             } else {
                                 @b3.form(routes.Cluster.handleUpdateCluster(cluster.name)) {
@@ -38,14 +38,14 @@
                                 <input type="hidden" name="kafkaVersion" value="@cluster.version.toString">
                                 <input type="hidden" name="zkHosts" value="@cluster.curatorConfig.zkConnect">
                                 <input type="hidden" name="operation" value="Enable">
-                                @b3.submit('class -> "btn btn-success ops-button"){ Enable }
+                                @b3.submit('class -> "btn btn-success ops-button"){ 启用 }
                                 }
                                 @b3.form(routes.Cluster.handleUpdateCluster(cluster.name)) {
                                 <input type="hidden" name="name" value="@cluster.name">
                                 <input type="hidden" name="kafkaVersion" value="@cluster.version.toString">
                                 <input type="hidden" name="zkHosts" value="@cluster.curatorConfig.zkConnect">
                                 <input type="hidden" name="operation" value="Delete">
-                                @b3.submit('class -> "btn btn-danger ops-button"){ Delete }
+                                @b3.submit('class -> "btn btn-danger ops-button"){ 删除 }
                                 }
                             }
                         }

@@ -9,7 +9,7 @@
 )(implicit af: features.ApplicationFeatures, messages: play.api.i18n.Messages, menus: models.navigation.Menus)
 
 @theMenu = {
-    @views.html.navigation.clusterMenu(cluster,"Topic","Confirm Assignments",menus.clusterMenus(cluster)(
+    @views.html.navigation.clusterMenu(cluster,"主题","确认作业",menus.clusterMenus(cluster)(
         errorOrForm.toOption.map(_._2.clusterFeatures).getOrElse(kafka.manager.features.ClusterFeatures.default)))
 }
 
@@ -25,7 +25,7 @@
 }
 
 @renderForm(confirmForm: Form[models.form.RunMultipleAssignments]) = {
-    <h4>Choose topics to reassign:</h4>
+    <h4>选择主题来重新分配:</h4>
     @b3.form(routes.ReassignPartitions.handleRunMultipleAssignments(cluster)) {
         <table class="table">
             <thead>
@@ -48,18 +48,18 @@
             </tr>
             </tbody>
         </table>
-        @b3.submit('class -> "btn btn-primary btn-block"){ Run Partition Assignments }
-        <a href="@routes.Topic.topics(cluster)" class="cancel-button btn btn-default" role="button">Cancel</a>
+        @b3.submit('class -> "btn btn-primary btn-block"){ 运行分区作业 }
+        <a href="@routes.Topic.topics(cluster)" class="cancel-button btn btn-default" role="button">取消</a>
     }
 }
 
 @main(
-  "Run Assignment",
+  "运行任务",
   menu = theMenu,
-  breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Topics",cluster))) {
+  breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Topic列表",cluster))) {
 <div class="col-md-6 un-pad-me">
     <div class="panel panel-default">
-        <div class="panel-heading"><h3><button type="button" class="btn btn-link" onclick="goBack()"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>Run Assignments</h3></div>
+        <div class="panel-heading"><h3><button type="button" class="btn btn-link" onclick="goBack()"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>运行任务</h3></div>
         <div class="panel-body">
             @errorOrForm.fold( views.html.errors.onApiError(_), t => renderForm(t._1))
         </div>

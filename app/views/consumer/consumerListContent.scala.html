@@ -12,18 +12,18 @@
     @state.percentageCovered match {
         case i if i <=  99 => {
             <span style="background-color: #F2DEDE">
-                (@state.percentageCovered% coverage, @state.totalLag.getOrElse("Lag unavailable") lag)
+                (@state.percentageCovered% coverage, @state.totalLag.getOrElse("滞后不可用") lag)
             </span>
         }
-        case i => {(@state.percentageCovered% coverage, @state.totalLag.getOrElse("Lag unavailable") lag)}
+        case i => {(@state.percentageCovered% coverage, @state.totalLag.getOrElse("滞后不可用") lag)}
     }
 }
     <table class="table" id="consumer-table">
         <thead>
-        <tr><th>Consumer</th>
-            <th>Type</th>
+        <tr><th>消费者</th>
+            <th>类型</th>
             @if(clusterContext.config.pollConsumers) {
-            <th>Topics it consumes from</th>
+            <th>消费Topics</th>
             }
         </tr>
         </thead>

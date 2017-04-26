@@ -177,3 +177,7 @@ License
 -------
 
 Apache Licensed. See accompanying LICENSE file.
+
+其他说明
+-------
+文件编码格式为UTF-8

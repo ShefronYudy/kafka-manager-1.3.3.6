@@ -55,19 +55,19 @@
 <table class="table" id="topics-table">
     <thead>
     <tr><th>Topic</th>
-        <th># Partitions</th>
-        <th># Brokers</th>
-        <th><span title="Percentage of cluster brokers having partitions from the topic">Brokers Spread %</span></th>
-        <th><span title="Percentage of brokers having more partitions than the average">Brokers Skew %</span></th>
-        <th><span title="Percentage of brokers having more partitions as leader than the average">Brokers Leader Skew %</span></th>
-        <th># Replicas</th>
-        <th><span title="Percentage of partitions having a missing replica">Under Replicated %</span></th>
+        <th>分区数</th>
+        <th>Broker数</th>
+        <th><span title="Percentage of cluster brokers having partitions from the topic">Brokers速度 %</span></th>
+        <th><span title="Percentage of brokers having more partitions than the average">Brokers偏差 %</span></th>
+        <th><span title="Percentage of brokers having more partitions as leader than the average">Brokers Leader偏差 %</span></th>
+        <th>副本数</th>
+        <th><span title="Percentage of partitions having a missing replica">复制中 %</span></th>
         @if(displayTopicSize){
-        <th>Leader Size</th>
+        <th>Leader size</th>
         }
         @if(pollConsumers){
-        <th>Producer Message/Sec</th>
-        <th>Summed Recent Offsets</th>
+        <th>生产消息/秒</th>
+        <th>最近偏移和</th>
         }
     </tr>
     </thead>

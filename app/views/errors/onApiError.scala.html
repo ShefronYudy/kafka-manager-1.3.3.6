@@ -5,7 +5,7 @@
 @(apiError: kafka.manager.ApiError, urlOption: Option[FollowLink] = None)
 
 <div class="alert alert-danger" role="alert">
-    <strong>Yikes!</strong> @apiError.msg
+    <strong>啊哟！</strong> @apiError.msg
     @urlOption.map { link =>
     <a href="@link.url">@link.title</a>
     }

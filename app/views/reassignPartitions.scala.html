@@ -8,7 +8,7 @@
 )(implicit af: features.ApplicationFeatures, messages: play.api.i18n.Messages, menus: models.navigation.Menus)
 
 @theMenu = {
-@views.html.navigation.clusterMenu(cluster,"Reassign Partitions","",menus.clusterMenus(cluster)(
+@views.html.navigation.clusterMenu(cluster,"重新分配分区","",menus.clusterMenus(cluster)(
     errorOrStatus.toOption.flatten.map(_.clusterContext.clusterFeatures).getOrElse(kafka.manager.features.ClusterFeatures.default)))
 }
 
@@ -16,20 +16,20 @@
 @viewOption.fold {
 <div class="row">
     <div class="alert alert-warning" role="alert">
-        No data found for any recent reassign partitions command.
+    	从最近重新分配的分区命令中未找到数据！
     </div>
 </div>
 } { repar =>
 <div class="row">
     <div class="panel panel-default">
-        <div class="panel-heading">Status</div>
+        <div class="panel-heading">状态</div>
         <table class="table">
             <tbody>
             <tr>
-                <td>Submitted:</td>
+                <td>已提交:</td>
                 <td>@repar.startTime</td>
             <tr>
-                <td>Completed:</td>
+                <td>已完成:</td>
                 <td>@repar.endTime.map(_.toString()).getOrElse("pending")</td>
             </tr>
             </tbody>
@@ -38,10 +38,10 @@
 </div>
 <div class="row">
     <div class="panel panel-default">
-        <div class="panel-heading">Request Data</div>
+        <div class="panel-heading">请求数据</div>
         <table class="table">
             <thead>
-            <tr><th>Topic</th><th>Partition</th><th>Replica Assignment</th></tr>
+            <tr><th>Topic</th><th>分区</th><th>副本任务</th></tr>
             </thead>
             <tbody>
             @for((kafka.common.TopicAndPartition(topic,partNum),assignment) <- repar.partitionsToBeReassigned.toList.sortBy(_._1.topic) ) {
@@ -59,12 +59,12 @@
 }
 
 @main(
-    "Reassign Partitions",
+    "重新分配分区",
     menu = theMenu,
-    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Reassign Partitions",cluster))) {
+    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("重新分配分区",cluster))) {
 <div class="col-md-6 un-pad-me">
     <div class="panel panel-default">
-        <div class="panel-heading"><h3>Reassign Partitions</h3></div>
+        <div class="panel-heading"><h3>重新分配分区</h3></div>
         <div class="col-md-12">
             @errorOrStatus.fold[Html](views.html.errors.onApiError(_), renderView(cluster, _))
         </div>

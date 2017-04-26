@@ -64,18 +64,18 @@ class PreferredReplicaElection (val messagesApi: MessagesApi, val kafkaManagerCo
             }
             errorOrSuccessFuture.map { errorOrSuccess =>
               Ok(views.html.common.resultOfCommand(
-                views.html.navigation.clusterMenu(c, "Preferred Replica Election", "", menus.clusterMenus(c)),
-                models.navigation.BreadCrumbs.withViewAndCluster("Run Election", c),
+                views.html.navigation.clusterMenu(c, "首选副本选举", "", menus.clusterMenus(c)),
+                models.navigation.BreadCrumbs.withViewAndCluster("运行选举", c),
                 errorOrSuccess,
-                "Run Election",
+                "运行选举",
                 FollowLink("Go to preferred replica election.", routes.PreferredReplicaElection.preferredReplicaElection(c).toString()),
                 FollowLink("Try again.", routes.PreferredReplicaElection.preferredReplicaElection(c).toString())
               ))
             }
           case UnknownPREO(opString) =>
             Future.successful(Ok(views.html.common.resultOfCommand(
-              views.html.navigation.clusterMenu(c, "Preferred Replica Election", "", menus.clusterMenus(c)),
-              models.navigation.BreadCrumbs.withNamedViewAndCluster("Preferred Replica Election", c, "Unknown Operation"),
+              views.html.navigation.clusterMenu(c, "首选副本选举", "", menus.clusterMenus(c)),
+              models.navigation.BreadCrumbs.withNamedViewAndCluster("首选副本选举", c, "未知操作"),
               -\/(ApiError(s"Unknown operation $opString")),
               "Unknown Preferred Replica Election Operation",
               FollowLink("Back to preferred replica election.", routes.PreferredReplicaElection.preferredReplicaElection(c).toString()),

@@ -11,7 +11,7 @@
 @import controllers.routes
 
 @theMenu = {
-    @views.html.navigation.clusterMenu(cluster,"Topics","Add Partitions to Topics",menus.clusterMenus(cluster)(
+    @views.html.navigation.clusterMenu(cluster,"Topic列表","添加分区到Topics",menus.clusterMenus(cluster)(
         errorOrForm.toOption.map(_._2.clusterFeatures).getOrElse(kafka.manager.features.ClusterFeatures.default)))
 }
 
@@ -30,24 +30,24 @@
 @b3.form(routes.Topic.handleAddPartitionsToMultipleTopics(cluster)) {
 <table class="table">
     <thead>
-    <tr><th>Add Partitions</th><th>Brokers</th></tr>
+    <tr><th>添加分区</th><th>Brokers</th></tr>
     </thead>
     <tbody>
     <tr>
-        &#9888; Selected topics will have the same number of partitions after the operation.
+        &#9888; 操作之后选中的分区将有相同数量的分区数.
     </tr>
     <tr>
         <td>
-            @b3.text(addMultipleTopicsPartitionsForm("partitions"), '_label -> "Partitions", 'placeholder -> "8")
+            @b3.text(addMultipleTopicsPartitionsForm("partitions"), '_label -> "分区", 'placeholder -> "8")
             @helper.repeat(addMultipleTopicsPartitionsForm("readVersions"), min = 1) { readVersionForm =>
             @b3.hidden(readVersionForm("topic").name,readVersionForm("topic").value.getOrElse(""))
             @b3.hidden(readVersionForm("version").name,readVersionForm("version").value.getOrElse(-1))
             }
             <button type="button" class="btn btn-default" onClick="checkBoxSelect('topics',true);">
-                <b>Select All</b>
+                <b>全选</b>
             </button>
             <button type="button" class="btn btn-default" onClick="checkBoxSelect('topics',false);">
-                <b>Select None</b>
+                <b>无</b>
             </button>
             @helper.repeat(addMultipleTopicsPartitionsForm("topics"), min = 1) { topicSelectForm =>
             @b3.hidden(topicSelectForm("name").name,topicSelectForm("name").value.getOrElse(""))
@@ -56,10 +56,10 @@
         </td>
         <td>
             <button type="button" class="btn btn-default" onClick="checkBoxSelect('brokers',true);">
-                <b>Select All</b>
+                <b>全选</b>
             </button>
             <button type="button" class="btn btn-default" onClick="checkBoxSelect('brokers',false);">
-                <b>Select None</b>
+                <b>无</b>
             </button>
             @helper.repeat(addMultipleTopicsPartitionsForm("brokers"), min = 1) { brokerSelectForm =>
             @b3.hidden(brokerSelectForm("id").name,brokerSelectForm("id").value.getOrElse(-1))
@@ -70,18 +70,18 @@
     </tr>
     </tbody>
 </table>
-@b3.submit('class -> "submit-button btn btn-primary"){ Add Partitions }
-<a href="@routes.Topic.topics(cluster)" class="cancel-button btn btn-default" role="button">Cancel</a>
+@b3.submit('class -> "submit-button btn btn-primary"){ 添加分区 }
+<a href="@routes.Topic.topics(cluster)" class="cancel-button btn btn-default" role="button">取消</a>
 }
 }
 
 @main(
-"Add Partitions to Multiple Topics",
+"添加分区到多个Topics",
 menu = theMenu,
-breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Topics",cluster))) {
+breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Topic列表",cluster))) {
 <div class="col-md-6 un-pad-me">
     <div class="panel panel-default">
-        <div class="panel-heading"><h3><button type="button" class="btn btn-link" onclick="goBack()"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>Add Partitions</h3></div>
+        <div class="panel-heading"><h3><button type="button" class="btn btn-link" onclick="goBack()"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>添加分区</h3></div>
         <div class="panel-body">
             @errorOrForm.fold( views.html.errors.onApiError(_), t => renderForm(t._1))
         </div>

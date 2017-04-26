@@ -28,85 +28,85 @@ object BreadCrumbs {
   import models.navigation.QuickRoutes._
 
   val baseBreadCrumbs: Map[String, IndexedSeq[BreadCrumb]] = Map(
-    "Clusters" -> IndexedSeq.empty[BreadCrumb],
-    "Add Cluster" -> IndexedSeq("Clusters".baseRouteBreadCrumb)
+    "集群列表" -> IndexedSeq.empty[BreadCrumb],
+    "添加集群" -> IndexedSeq("集群列表".baseRouteBreadCrumb)
   )
 
   val clusterBreadCrumbs: Map[String, IndexedSeq[BreadCrumb]] = Map(
-    "Unknown Cluster Operation" -> IndexedSeq("Clusters".baseRouteBreadCrumb),
-    "Delete Cluster" -> IndexedSeq("Clusters".baseRouteBreadCrumb, BCDynamicText(identity)),
-    "Disable Cluster" -> IndexedSeq("Clusters".baseRouteBreadCrumb, BCDynamicText(identity)),
-    "Enable Cluster" -> IndexedSeq("Clusters".baseRouteBreadCrumb, BCDynamicText(identity)),
-    "Update Cluster" -> IndexedSeq("Clusters".baseRouteBreadCrumb, BCDynamicText(identity)),
-    "Summary" -> IndexedSeq("Clusters".baseRouteBreadCrumb,BCDynamicText(identity)),
-    "Brokers" -> IndexedSeq("Clusters".baseRouteBreadCrumb,BCDynamicNamedLink(identity,"Summary".clusterRoute)),
-    "Broker View" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute),
-      "Brokers".clusterRouteBreadCrumb),
-    "Topics" -> IndexedSeq("Clusters".baseRouteBreadCrumb,BCDynamicNamedLink(identity,"Summary".clusterRoute)),
-    "Consumers" -> IndexedSeq("Clusters".baseRouteBreadCrumb,BCDynamicNamedLink(identity,"Summary".clusterRoute)),
-    "Create Topic" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute),
-      "Topics".clusterRouteBreadCrumb),
-    "Topic View" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute),
-      "Topics".clusterRouteBreadCrumb),
-    "Consumer View" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute),
-      "Consumers".clusterRouteBreadCrumb),
-    "Consumed Topic View" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute),
-      "Consumers".clusterRouteBreadCrumb),
-    "Logkafkas" -> IndexedSeq("Clusters".baseRouteBreadCrumb,BCDynamicNamedLink(identity,"Summary".clusterRoute)),
-    "Create Logkafka" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute),
-      "Logkafkas".clusterRouteBreadCrumb),
-    "Logkafka View" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute),
-      "Logkafkas".clusterRouteBreadCrumb),
-    "Preferred Replica Election" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute)),
-    "Reassign Partitions" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute)),
-    "Run Election" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute),
-      "Preferred Replica Election".clusterRouteBreadCrumb
+    "未知集群操作" -> IndexedSeq("集群列表".baseRouteBreadCrumb),
+    "删除集群" -> IndexedSeq("集群列表".baseRouteBreadCrumb, BCDynamicText(identity)),
+    "禁用集群" -> IndexedSeq("集群列表".baseRouteBreadCrumb, BCDynamicText(identity)),
+    "启用集群" -> IndexedSeq("集群列表".baseRouteBreadCrumb, BCDynamicText(identity)),
+    "更新集群" -> IndexedSeq("集群列表".baseRouteBreadCrumb, BCDynamicText(identity)),
+    "概要" -> IndexedSeq("集群列表".baseRouteBreadCrumb,BCDynamicText(identity)),
+    "Broker列表" -> IndexedSeq("集群列表".baseRouteBreadCrumb,BCDynamicNamedLink(identity,"概要".clusterRoute)),
+    "Broker视图" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute),
+      "Broker列表".clusterRouteBreadCrumb),
+    "Topic列表" -> IndexedSeq("集群列表".baseRouteBreadCrumb,BCDynamicNamedLink(identity,"概要".clusterRoute)),
+    "消费者列表" -> IndexedSeq("集群列表".baseRouteBreadCrumb,BCDynamicNamedLink(identity,"概要".clusterRoute)),
+    "创建Topic" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute),
+      "Topic列表".clusterRouteBreadCrumb),
+    "Topic视图" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute),
+      "Topic列表".clusterRouteBreadCrumb),
+    "消费者视图" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute),
+      "消费者列表".clusterRouteBreadCrumb),
+    "已消费Topic视图" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute),
+      "消费者列表".clusterRouteBreadCrumb),
+    "Logkafka列表" -> IndexedSeq("集群列表".baseRouteBreadCrumb,BCDynamicNamedLink(identity,"概要".clusterRoute)),
+    "创建Logkafka" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute),
+      "Logkafka列表".clusterRouteBreadCrumb),
+    "Logkafka视图" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute),
+      "Logkafka列表".clusterRouteBreadCrumb),
+    "首选副本选举" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute)),
+    "重新分配分区" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute)),
+    "运行选举" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute),
+      "首选副本选举".clusterRouteBreadCrumb
     )
   )
 
   val topicBreadCrumbs: Map[String, IndexedSeq[BreadCrumb]] = Map(
-    "Topic View" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute),
-      "Topics".clusterRouteBreadCrumb,
-      BCDynamicMultiNamedLink(identity,"Topic View".topicRoute)
+    "Topic视图" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute),
+      "Topic列表".clusterRouteBreadCrumb,
+      BCDynamicMultiNamedLink(identity,"Topic视图".topicRoute)
     )
   )
 
   val consumerBreadCrumbs: Map[String, IndexedSeq[BreadCrumb]] = Map(
-    "Consumer View" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute),
-      "Consumers".clusterRouteBreadCrumb,
-      BCDynamicMultiNamedLink2(identity,"Consumer View".consumerRoute)
+    "消费者视图" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute),
+      "消费者列表".clusterRouteBreadCrumb,
+      BCDynamicMultiNamedLink2(identity,"消费者视图".consumerRoute)
     )
   )
   val logkafkaBreadCrumbs: Map[String, IndexedSeq[BreadCrumb]] = Map(
-    "Logkafka View" -> IndexedSeq(
-      "Clusters".baseRouteBreadCrumb,
-      BCDynamicNamedLink(identity,"Summary".clusterRoute),
-      "Logkafkas".clusterRouteBreadCrumb,
-      BCDynamicMultiNamedLink(identity,"Logkafka View".logkafkaRoute)
+    "Logkafka视图" -> IndexedSeq(
+      "集群列表".baseRouteBreadCrumb,
+      BCDynamicNamedLink(identity,"概要".clusterRoute),
+      "Logkafka列表".clusterRouteBreadCrumb,
+      BCDynamicMultiNamedLink(identity,"Logkafka视图".logkafkaRoute)
     )
   )
 

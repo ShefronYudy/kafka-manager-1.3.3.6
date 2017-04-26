@@ -184,10 +184,10 @@ class Topic (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManager
             case t =>
               implicit val clusterFeatures = ClusterFeatures.default
               Ok(views.html.common.resultOfCommand(
-                views.html.navigation.clusterMenu(clusterName, "Topic", "Create", menus.clusterMenus(clusterName)),
-                models.navigation.BreadCrumbs.withNamedViewAndCluster("Topics", clusterName, "Create Topic"),
+                views.html.navigation.clusterMenu(clusterName, "主题", "创建", menus.clusterMenus(clusterName)),
+                models.navigation.BreadCrumbs.withNamedViewAndCluster("Topic列表", clusterName, "创建Topic"),
                 -\/(ApiError(s"Unknown error : ${t.getMessage}")),
-                "Create Topic",
+                "创建Topic",
                 FollowLink("Try again.", routes.Topic.createTopic(clusterName).toString()),
                 FollowLink("Try again.", routes.Topic.createTopic(clusterName).toString())
               ))
@@ -199,10 +199,10 @@ class Topic (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManager
           kafkaManager.createTopic(clusterName, ct.topic, ct.partitions, ct.replication, props).map { errorOrSuccess =>
             implicit val clusterFeatures = errorOrSuccess.toOption.map(_.clusterFeatures).getOrElse(ClusterFeatures.default)
             Ok(views.html.common.resultOfCommand(
-              views.html.navigation.clusterMenu(clusterName, "Topic", "Create", menus.clusterMenus(clusterName)),
-              models.navigation.BreadCrumbs.withNamedViewAndCluster("Topics", clusterName, "Create Topic"),
+              views.html.navigation.clusterMenu(clusterName, "主题", "创建", menus.clusterMenus(clusterName)),
+              models.navigation.BreadCrumbs.withNamedViewAndCluster("Topic列表", clusterName, "创建Topic"),
               errorOrSuccess,
-              "Create Topic",
+              "创建Topic",
               FollowLink("Go to topic view.", routes.Topic.topic(clusterName, ct.topic).toString()),
               FollowLink("Try again.", routes.Topic.createTopic(clusterName).toString())
             ))
@@ -237,10 +237,10 @@ class Topic (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManager
           kafkaManager.deleteTopic(clusterName, deleteTopic.topic).map { errorOrSuccess =>
             implicit val clusterFeatures = errorOrSuccess.toOption.map(_.clusterFeatures).getOrElse(ClusterFeatures.default)
             Ok(views.html.common.resultOfCommand(
-              views.html.navigation.clusterMenu(clusterName, "Topic", "Topic View", menus.clusterMenus(clusterName)),
-              models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic View", clusterName, topic, "Delete Topic"),
+              views.html.navigation.clusterMenu(clusterName, "主题", "Topic视图", menus.clusterMenus(clusterName)),
+              models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic视图", clusterName, topic, "删除Topic"),
               errorOrSuccess,
-              "Delete Topic",
+              "删除Topic",
               FollowLink("Go to topic list.", routes.Topic.topics(clusterName).toString()),
               FollowLink("Try again.", routes.Topic.topic(clusterName, topic).toString())
             ))
@@ -301,10 +301,10 @@ class Topic (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManager
             case t =>
               implicit val clusterFeatures = ClusterFeatures.default
               Ok(views.html.common.resultOfCommand(
-                views.html.navigation.clusterMenu(clusterName, "Topic", "Topic View", menus.clusterMenus(clusterName)),
-                models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic View", clusterName, topic, "Add Partitions"),
+                views.html.navigation.clusterMenu(clusterName, "主题", "Topic视图", menus.clusterMenus(clusterName)),
+                models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic视图", clusterName, topic, "添加分区"),
                 -\/(ApiError(s"Unknown error : ${t.getMessage}")),
-                "Add Partitions",
+                "添加分区",
                 FollowLink("Try again.", routes.Topic.addPartitions(clusterName, topic).toString()),
                 FollowLink("Try again.", routes.Topic.addPartitions(clusterName, topic).toString())
               ))
@@ -314,10 +314,10 @@ class Topic (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManager
           kafkaManager.addTopicPartitions(clusterName, addTopicPartitions.topic, addTopicPartitions.brokers.filter(_.selected).map(_.id), addTopicPartitions.partitions, addTopicPartitions.readVersion).map { errorOrSuccess =>
             implicit val clusterFeatures = errorOrSuccess.toOption.map(_.clusterFeatures).getOrElse(ClusterFeatures.default)
             Ok(views.html.common.resultOfCommand(
-              views.html.navigation.clusterMenu(clusterName, "Topic", "Topic View", menus.clusterMenus(clusterName)),
-              models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic View", clusterName, topic, "Add Partitions"),
+              views.html.navigation.clusterMenu(clusterName, "主题", "Topic视图", menus.clusterMenus(clusterName)),
+              models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic视图", clusterName, topic, "添加分区"),
               errorOrSuccess,
-              "Add Partitions",
+              "添加分区",
               FollowLink("Go to topic view.", routes.Topic.topic(clusterName, addTopicPartitions.topic).toString()),
               FollowLink("Try again.", routes.Topic.addPartitions(clusterName, topic).toString())
             ))
@@ -337,10 +337,10 @@ class Topic (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManager
             case t =>
               implicit val clusterFeatures = ClusterFeatures.default
               Ok(views.html.common.resultOfCommand(
-                views.html.navigation.clusterMenu(clusterName, "Topics", "Add Partitions to Multiple Topics", menus.clusterMenus(clusterName)),
-                models.navigation.BreadCrumbs.withNamedViewAndCluster("Topics", clusterName, "Add Partitions to Multiple Topics"),
+                views.html.navigation.clusterMenu(clusterName, "Topic列表", "添加分区到多个Topic", menus.clusterMenus(clusterName)),
+                models.navigation.BreadCrumbs.withNamedViewAndCluster("Topic列表", clusterName, "添加分区到多个Topic"),
                 -\/(ApiError(s"Unknown error : ${t.getMessage}")),
-                "Add Partitions to All Topics",
+                "添加分区到多个Topic",
                 FollowLink("Try again.", routes.Topic.addPartitionsToMultipleTopics(clusterName).toString()),
                 FollowLink("Try again.", routes.Topic.addPartitionsToMultipleTopics(clusterName).toString())
               ))
@@ -353,10 +353,10 @@ class Topic (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManager
           kafkaManager.addMultipleTopicsPartitions(clusterName, topics, brokers, addMultipleTopicsPartitions.partitions, readVersions).map { errorOrSuccess =>
             implicit val clusterFeatures = errorOrSuccess.toOption.map(_.clusterFeatures).getOrElse(ClusterFeatures.default)
             Ok(views.html.common.resultOfCommand(
-              views.html.navigation.clusterMenu(clusterName, "Topics", "Add Partitions to Multiple Topics", menus.clusterMenus(clusterName)),
-              models.navigation.BreadCrumbs.withNamedViewAndCluster("Topics", clusterName, "Add Partitions to Multiple Topics"),
+              views.html.navigation.clusterMenu(clusterName, "Topic列表", "添加分区到多个Topic", menus.clusterMenus(clusterName)),
+              models.navigation.BreadCrumbs.withNamedViewAndCluster("Topic列表", clusterName, "添加分区到多个Topic"),
               errorOrSuccess,
-              "Add Partitions to All Topics",
+              "添加分区到多个Topic",
               FollowLink("Go to topic list.", routes.Topic.topics(clusterName).toString()),
               FollowLink("Try again.", routes.Topic.addPartitionsToMultipleTopics(clusterName).toString())
             ))
@@ -410,10 +410,10 @@ class Topic (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManager
             case t =>
               implicit val clusterFeatures = ClusterFeatures.default
               Ok(views.html.common.resultOfCommand(
-                views.html.navigation.clusterMenu(clusterName, "Topic", "Topic View", menus.clusterMenus(clusterName)),
-                models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic View", clusterName, topic, "Update Config"),
+                views.html.navigation.clusterMenu(clusterName, "主题", "Topic视图", menus.clusterMenus(clusterName)),
+                models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic视图", clusterName, topic, "更新配置"),
                 -\/(ApiError(s"Unknown error : ${t.getMessage}")),
-                "Update Config",
+                "更新配置",
                 FollowLink("Try again.", routes.Topic.updateConfig(clusterName, topic).toString()),
                 FollowLink("Try again.", routes.Topic.updateConfig(clusterName, topic).toString())
               ))
@@ -425,10 +425,10 @@ class Topic (val messagesApi: MessagesApi, val kafkaManagerContext: KafkaManager
           kafkaManager.updateTopicConfig(clusterName, updateTopicConfig.topic, props, updateTopicConfig.readVersion).map { errorOrSuccess =>
             implicit val clusterFeatures = errorOrSuccess.toOption.map(_.clusterFeatures).getOrElse(ClusterFeatures.default)
             Ok(views.html.common.resultOfCommand(
-              views.html.navigation.clusterMenu(clusterName, "Topic", "Topic View", menus.clusterMenus(clusterName)),
-              models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic View", clusterName, topic, "Update Config"),
+              views.html.navigation.clusterMenu(clusterName, "主题", "Topic视图", menus.clusterMenus(clusterName)),
+              models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic视图", clusterName, topic, "更新配置"),
               errorOrSuccess,
-              "Update Config",
+              "更新配置",
               FollowLink("Go to topic view.", routes.Topic.topic(clusterName, updateTopicConfig.topic).toString()),
               FollowLink("Try again.", routes.Topic.updateConfig(clusterName, topic).toString())
             ))

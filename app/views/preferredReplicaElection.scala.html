@@ -10,7 +10,7 @@ operationForm: Form[models.form.PreferredReplicaElectionOperation]
 )(implicit af: features.ApplicationFeatures, messages: play.api.i18n.Messages, menus: models.navigation.Menus)
 
 @theMenu = {
-@views.html.navigation.clusterMenu(cluster,"Preferred Replica Election","",menus.clusterMenus(cluster)(
+@views.html.navigation.clusterMenu(cluster,"首选副本选举","",menus.clusterMenus(cluster)(
     errorOrStatus.toOption.flatten.map(_.clusterContext.clusterFeatures).getOrElse(kafka.manager.features.ClusterFeatures.default)))
 }
 
@@ -18,13 +18,13 @@ operationForm: Form[models.form.PreferredReplicaElectionOperation]
 @viewOption.fold {
 <div class="row">
     <div class="alert alert-warning" role="alert">
-        No data found for any recent preferred replica election command.
+    	从所有的首选副本选举命名中未找到数据！
     </div>
 </div>
 } { pre =>
 <div class="row">
     <div class="panel panel-default">
-        <div class="panel-heading">Last Request Info</div>
+        <div class="panel-heading">最后请求的信息</div>
         <table class="table">
             <tbody>
             <tr>
@@ -40,10 +40,10 @@ operationForm: Form[models.form.PreferredReplicaElectionOperation]
 </div>
 <div class="row">
     <div class="panel panel-default">
-        <div class="panel-heading">Request Data</div>
+        <div class="panel-heading">请求数据</div>
         <table class="table">
             <thead>
-            <tr><th>Topic</th><th>Partition</th></tr>
+            <tr><th>Topic</th><th>分区</th></tr>
             </thead>
             <tbody>
             @for(kafka.common.TopicAndPartition(topic,partNum) <- pre.topicAndPartition.toList.sortBy(_.topic) ) {
@@ -60,19 +60,19 @@ operationForm: Form[models.form.PreferredReplicaElectionOperation]
 }
 
 @main(
-    "Preferred Replica Election",
+    "首选副本选举",
     menu = theMenu,
-    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Preferred Replica Election",cluster))) {
+    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("首选副本选举",cluster))) {
 <div class="col-md-6 un-pad-me">
     <div class="panel panel-default">
-        <div class="panel-heading"><h3>Preferred Replica Election</h3></div>
+        <div class="panel-heading"><h3>首选副本选举</h3></div>
         <div class="col-md-12">
             @features.app(features.KMPreferredReplicaElectionFeature) {
                 <div class="row">
                     @b3.form(routes.PreferredReplicaElection.handleRunElection(cluster)) {
                     <fieldset>
                         <input type="hidden" name="operation" value="run">
-                        @b3.submit('class -> "btn btn-primary"){ Run Preferred Replica Election }
+                        @b3.submit('class -> "btn btn-primary"){ 运行首选副本选举 }
                     </fieldset>
                     }
                 </div>

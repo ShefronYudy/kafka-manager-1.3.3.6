@@ -327,8 +327,8 @@ class ReassignPartitions (val messagesApi: MessagesApi, val kafkaManagerContext:
               kafkaManager.generatePartitionAssignments(c, Set(t), assignment.brokers.filter(_.selected).map(_.id).toSet).map { errorOrSuccess =>
                 implicit val clusterFeatures = cc.clusterFeatures
                 Ok(views.html.common.resultsOfCommand(
-                  views.html.navigation.clusterMenu(c, "Reassign Partitions", "", menus.clusterMenus(c)),
-                  models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic View", c, t, "Generate Partition Assignments"),
+                  views.html.navigation.clusterMenu(c, "重新分配分区", "", menus.clusterMenus(c)),
+                  models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic视图", c, t, "生成分区作业"),
                   errorOrSuccess,
                   s"Generate Partition Assignments - $t",
                   FollowLink("Go to topic view.", routes.Topic.topic(c, t).toString()),
@@ -355,8 +355,8 @@ class ReassignPartitions (val messagesApi: MessagesApi, val kafkaManagerContext:
               kafkaManager.generatePartitionAssignments(c, assignment.topics.filter(_.selected).map(_.name).toSet, assignment.brokers.filter(_.selected).map(_.id).toSet).map { errorOrSuccess =>
                 implicit val clusterFeatures = cc.clusterFeatures
                 Ok(views.html.common.resultsOfCommand(
-                  views.html.navigation.clusterMenu(c, "Reassign Partitions", "", menus.clusterMenus(c)),
-                  models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic View", c, "", "Generate Partition Assignments"),
+                  views.html.navigation.clusterMenu(c, "重新分配分区", "", menus.clusterMenus(c)),
+                  models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic视图", c, "", "生成分区作业"),
                   errorOrSuccess,
                   s"Generate Partition Assignments",
                   FollowLink("Go to topic list.", routes.Topic.topics(c).toString()),
@@ -386,8 +386,8 @@ class ReassignPartitions (val messagesApi: MessagesApi, val kafkaManagerContext:
                 implicit val clusterFeatures = cc.clusterFeatures
                 Ok(
                   views.html.common.resultsOfCommand(
-                    views.html.navigation.clusterMenu(c, "Reassign Partitions", "", menus.clusterMenus(c)),
-                    models.navigation.BreadCrumbs.withNamedViewAndCluster("Topics", c, "Reassign Partitions"),
+                    views.html.navigation.clusterMenu(c, "重新分配分区", "", menus.clusterMenus(c)),
+                    models.navigation.BreadCrumbs.withNamedViewAndCluster("Topic列表", c, "重新分配分区"),
                     errorOrSuccess,
                     s"Run Reassign Partitions",
                     FollowLink("Go to reassign partitions.", routes.ReassignPartitions.reassignPartitions(c).toString()),
@@ -415,8 +415,8 @@ class ReassignPartitions (val messagesApi: MessagesApi, val kafkaManagerContext:
                 implicit val clusterFeatures = cc.clusterFeatures
                 kafkaManager.runReassignPartitions(c, Set(t)).map { errorOrSuccess =>
                   Ok(views.html.common.resultsOfCommand(
-                    views.html.navigation.clusterMenu(c, "Reassign Partitions", "", menus.clusterMenus(c)),
-                    models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic View", c, t, "Run Reassign Partitions"),
+                    views.html.navigation.clusterMenu(c, "重新分配分区", "", menus.clusterMenus(c)),
+                    models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic视图", c, t, "运行重新分配分区"),
                     errorOrSuccess,
                     s"Run Reassign Partitions - $t",
                     FollowLink("Go to reassign partitions.", routes.ReassignPartitions.reassignPartitions(c).toString()),
@@ -427,8 +427,8 @@ class ReassignPartitions (val messagesApi: MessagesApi, val kafkaManagerContext:
                 implicit val clusterFeatures = cc.clusterFeatures
                 kafkaManager.runReassignPartitions(c, Set(t), force = true).map { errorOrSuccess =>
                   Ok(views.html.common.resultsOfCommand(
-                    views.html.navigation.clusterMenu(c, "Reassign Partitions", "", menus.clusterMenus(c)),
-                    models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic View", c, t, "Run Reassign Partitions"),
+                    views.html.navigation.clusterMenu(c, "重新分配分区", "", menus.clusterMenus(c)),
+                    models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic视图", c, t, "运行重新分配分区"),
                     errorOrSuccess,
                     s"Run Reassign Partitions - $t",
                     FollowLink("Go to reassign partitions.", routes.ReassignPartitions.reassignPartitions(c).toString()),
@@ -438,8 +438,8 @@ class ReassignPartitions (val messagesApi: MessagesApi, val kafkaManagerContext:
               case unknown =>
                 implicit val clusterFeatures = cc.clusterFeatures
                 Future.successful(Ok(views.html.common.resultOfCommand(
-                  views.html.navigation.clusterMenu(c, "Reassign Partitions", "", menus.clusterMenus(c)),
-                  models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic View", c, t, "Unknown Reassign Partitions Operation"),
+                  views.html.navigation.clusterMenu(c, "重新分配分区", "", menus.clusterMenus(c)),
+                  models.navigation.BreadCrumbs.withNamedViewAndClusterAndTopic("Topic视图", c, t, "未知重新分配分区操作"),
                   -\/(ApiError(s"Unknown operation $unknown")),
                   "Unknown Reassign Partitions Operation",
                   FollowLink("Back to reassign partitions.", routes.ReassignPartitions.reassignPartitions(c).toString()),

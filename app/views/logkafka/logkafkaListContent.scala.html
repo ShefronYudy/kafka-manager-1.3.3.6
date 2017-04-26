@@ -24,7 +24,7 @@
 
 <table class="table" id="logkafkas-table">
     <thead>
-        <tr><th>row</th><th>Logkafka Id</th><th>Log Path</th><th># Real Path</th><th># Last Rotate Time</th><th># File Inode</th><th># File Pos</th><th># File Size</th><th># Topic</th><th>Operations</th></tr>
+        <tr><th>行号</th><th>Logkafka Id</th><th>Log Path</th><th># Real Path</th><th># 上次滚动时间</th><th># File Inode</th><th># File Pos</th><th># File Size</th><th># Topic</th><th>操作</th></tr>
     </thead>
     <tbody>
     @for( ((logkafka_id, logkafkaIdentity), deleted) <- logkafkas) {
@@ -87,19 +87,19 @@
                         @im._1.map { c =>
                             @c.get("valid").map { enabled =>
                                 @if(enabled.toBoolean) {
-                                    <a href="@routes.Logkafka.updateConfig(cluster, logkafka_id, log_path)" class="btn btn-default ops-button" role="button">Modify</a>
+                                    <a href="@routes.Logkafka.updateConfig(cluster, logkafka_id, log_path)" class="btn btn-default ops-button" role="button">修改</a>
                                     @b3.form(routes.Logkafka.handleDisableConfig(cluster, logkafka_id, log_path)) {
                                         <input type="hidden" name="name" value="@cluster">
-                                        @b3.submit('class -> "btn btn-warning ops-button"){ Disable }
+                                        @b3.submit('class -> "btn btn-warning ops-button"){ 禁用 }
                                     }
                                 } else {
                                     @b3.form(routes.Logkafka.handleEnableConfig(cluster, logkafka_id, log_path)) {
                                         <input type="hidden" name="name" value="@cluster">
-                                        @b3.submit('class -> "btn btn-success ops-button"){ Enable }
+                                        @b3.submit('class -> "btn btn-success ops-button"){ 启用 }
                                     }
                                     @b3.form(routes.Logkafka.handleDeleteLogkafka(cluster, logkafka_id, log_path)) {
                                         <input type="hidden" name="name" value="@cluster">
-                                        @b3.submit('class -> "btn btn-danger ops-button"){ Delete }
+                                        @b3.submit('class -> "btn btn-danger ops-button"){ 删除 }
                                     }
                                 }
                             }.getOrElse{<td> </td>}

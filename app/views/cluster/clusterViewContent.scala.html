@@ -5,20 +5,20 @@
 @(cluster: String, clusterView: kafka.manager.model.ActorModel.CMView)(implicit messages: play.api.i18n.Messages)
 
 <div class="panel panel-default">
-    <div class="panel-heading"><h3>Cluster Information</h3></div>
+    <div class="panel-heading"><h3>集群信息</h3></div>
     <table class="table">
         <tbody>
         <tr>
-            <td><b>Zookeepers</b></td><td>@clusterView.clusterContext.config.curatorConfig.zkConnect.replace(","," ")</td>
+            <td><b>Zookeepers地址</b></td><td>@clusterView.clusterContext.config.curatorConfig.zkConnect.replace(","," ")</td>
         </tr>
         <tr>
-            <td><b>Version</b></td><td>@clusterView.clusterContext.config.version.toString</td>
+            <td><b>版本</b></td><td>@clusterView.clusterContext.config.version.toString</td>
         </tr>
         </tbody>
     </table>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h3>Cluster Summary</h3></div>
+    <div class="panel-heading"><h3>集群概要</h3></div>
     <table class="table">
         <tbody>
         <tr>

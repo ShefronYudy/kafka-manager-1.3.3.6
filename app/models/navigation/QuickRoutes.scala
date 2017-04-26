@@ -14,35 +14,35 @@ object QuickRoutes {
   import models.navigation.BreadCrumbs._
 
   val baseRoutes : Map[String, () => Call] = Map(
-    "Clusters" -> controllers.routes.Application.index,
-    "List" -> controllers.routes.Application.index,
-    "Add Cluster" -> controllers.routes.Cluster.addCluster
+    "集群列表" -> controllers.routes.Application.index,
+    "列表" -> controllers.routes.Application.index,
+    "添加集群" -> controllers.routes.Cluster.addCluster
   )
   val clusterRoutes : Map[String, String => Call] = Map(
-    "Update Cluster" -> controllers.routes.Cluster.updateCluster,
-    "Summary" -> controllers.routes.Cluster.cluster,
-    "Brokers" -> controllers.routes.Cluster.brokers,
-    "Topics" -> controllers.routes.Topic.topics,
-    "Consumers" -> controllers.routes.Consumer.consumers,
-    "List" -> controllers.routes.Topic.topics,
-    "Create" -> controllers.routes.Topic.createTopic,
-    "Preferred Replica Election" -> controllers.routes.PreferredReplicaElection.preferredReplicaElection,
-    "Reassign Partitions" -> controllers.routes.ReassignPartitions.reassignPartitions,
-    "Logkafkas" -> controllers.routes.Logkafka.logkafkas,
-    "List Logkafka" -> controllers.routes.Logkafka.logkafkas,
-    "Create Logkafka" -> controllers.routes.Logkafka.createLogkafka
+    "更新集群" -> controllers.routes.Cluster.updateCluster,
+    "概要" -> controllers.routes.Cluster.cluster,
+    "Broker列表" -> controllers.routes.Cluster.brokers,
+    "Topic列表" -> controllers.routes.Topic.topics,
+    "消费者列表" -> controllers.routes.Consumer.consumers,
+    "列表" -> controllers.routes.Topic.topics,
+    "创建" -> controllers.routes.Topic.createTopic,
+    "首选副本选举" -> controllers.routes.PreferredReplicaElection.preferredReplicaElection,
+    "重新分配分区" -> controllers.routes.ReassignPartitions.reassignPartitions,
+    "Logkafka列表" -> controllers.routes.Logkafka.logkafkas,
+    "Logkafka列表" -> controllers.routes.Logkafka.logkafkas,
+    "创建Logkafka" -> controllers.routes.Logkafka.createLogkafka
   )
   val topicRoutes : Map[String, (String, String) => Call] = Map(
-    "Topic View" -> ((c, t) => controllers.routes.Topic.topic(c, t, force=false)),
-    "Add Partitions" -> controllers.routes.Topic.addPartitions,
-    "Update Config" -> controllers.routes.Topic.addPartitions
+    "Topic视图" -> ((c, t) => controllers.routes.Topic.topic(c, t, force=false)),
+    "添加分区" -> controllers.routes.Topic.addPartitions,
+    "更新配置" -> controllers.routes.Topic.addPartitions
   )
   val consumerRoutes : Map[String, (String, String, String) => Call] = Map(
-    "Consumer View" -> controllers.routes.Consumer.consumer
+    "消费者视图" -> controllers.routes.Consumer.consumer
   )
   val logkafkaRoutes : Map[String, (String, String, String) => Call] = Map(
-    "Logkafka View" -> controllers.routes.Logkafka.logkafka,
-    "Update Config" -> controllers.routes.Logkafka.updateConfig
+    "Logkafka视图" -> controllers.routes.Logkafka.logkafka,
+    "更新配置" -> controllers.routes.Logkafka.updateConfig
   )
 
   implicit class BaseRoute(s: String) {

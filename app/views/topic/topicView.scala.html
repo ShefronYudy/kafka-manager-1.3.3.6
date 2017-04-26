@@ -13,14 +13,14 @@
 )(implicit af: features.ApplicationFeatures, messages: play.api.i18n.Messages, menus: models.navigation.Menus)
 
 @theMenu = {
-    @views.html.navigation.clusterMenu(cluster,"Topic","",menus.clusterMenus(cluster)(
+    @views.html.navigation.clusterMenu(cluster,"主题","",menus.clusterMenus(cluster)(
         errorOrTopicIdentity.toOption.map(_.clusterContext.clusterFeatures).getOrElse(kafka.manager.features.ClusterFeatures.default)))
 }
 
 @main(
-    "Topic View",
+    "Topic视图",
     menu = theMenu,
-    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withNamedViewAndCluster("Topic View",cluster,topic))) {
+    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withNamedViewAndCluster("Topic视图",cluster,topic))) {
 <div class="col-md-12 un-pad-me">
     <div class="panel panel-default">
         <div class="panel-heading">

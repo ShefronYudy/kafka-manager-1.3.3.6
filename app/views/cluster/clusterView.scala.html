@@ -7,14 +7,14 @@
 )(implicit af: features.ApplicationFeatures, messages: play.api.i18n.Messages, menus: models.navigation.Menus)
 
 @theMenu = {
-    @views.html.navigation.clusterMenu(cluster,"Cluster","Summary",menus.clusterMenus(cluster)(
+    @views.html.navigation.clusterMenu(cluster,"集群","概要",menus.clusterMenus(cluster)(
         errorOrClusterView.toOption.map(_.clusterContext.clusterFeatures).getOrElse(kafka.manager.features.ClusterFeatures.default)))
 }
 
 @main(
-    "Kafka Manager",
+    "Kafka管理台",
     menu = theMenu,
-    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Summary",cluster))) {
+    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("概要",cluster))) {
 <div class="col-md-6 un-pad-me">
     @errorOrClusterView.fold(views.html.errors.onApiError(_),views.html.cluster.clusterViewContent(cluster,_))
 </div>

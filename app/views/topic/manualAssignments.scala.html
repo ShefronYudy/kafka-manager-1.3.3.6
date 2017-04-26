@@ -21,7 +21,7 @@
 cf: kafka.manager.features.ClusterFeatures, messages: play.api.i18n.Messages, menus: models.navigation.Menus)
 
 @theMenu = {
-@views.html.navigation.clusterMenu(cluster,"Topic","Manual Partition Assignments",menus.clusterMenus(cluster))
+@views.html.navigation.clusterMenu(cluster,"主题","手动分区作业",menus.clusterMenus(cluster))
 }
 @color(brokerId: Int) = @{
   java.security.MessageDigest.getInstance("MD5").digest("" + brokerId).map("%02X".format(_)).mkString.substring(0,6)
@@ -58,12 +58,12 @@ cf: kafka.manager.features.ClusterFeatures, messages: play.api.i18n.Messages, me
                 <button type="button" class="btn btn-link" onclick="goBack()">
                     <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
                 </button>
-                Manual Partition Assignments
+                手动分区作业
             </div>
             <div class="btn-group-vertical col-md-4" role="group" aria-label="...">
                 <button class="btn btn-primary " type="submit">
                     <span class="glyphicon glyphicon-floppy-disk"></span>
-                    Save Partition Assignment
+                    保存分区分配
                 </button>
             </div>
         </h3>
@@ -137,9 +137,9 @@ cf: kafka.manager.features.ClusterFeatures, messages: play.api.i18n.Messages, me
 }
 
 @main(
-  "Manual Multiple Assignment",
+  "手动多任务",
   menu = theMenu,
-  breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Topics",cluster))) {
+  breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Topic列表",cluster))) {
 <div class="row">
     <div class="col-md-8">
         @if(true) {

@@ -15,53 +15,53 @@ class Menus(implicit applicationFeatures: ApplicationFeatures) {
   import models.navigation.QuickRoutes._
   
   private[this] def clusterMenu(cluster: String) : Option[Menu] = {
-    val defaultItems = IndexedSeq("Summary".clusterRouteMenuItem(cluster),
-                                  "List".baseRouteMenuItem)
+    val defaultItems = IndexedSeq("概要".clusterRouteMenuItem(cluster),
+                                  "列表".baseRouteMenuItem)
     val items = {
       if(applicationFeatures.features(KMClusterManagerFeature))
-        defaultItems.+:("Add Cluster".baseRouteMenuItem)
+        defaultItems.+:("添加集群".baseRouteMenuItem)
       else
         defaultItems
     }
     
-    Option(Menu("Cluster", items, None))
+    Option(Menu("集群", items, None))
   }
 
   private[this] def topicMenu(cluster: String) : Option[Menu] = {
-    val defaultItems = IndexedSeq("List".clusterRouteMenuItem(cluster))
+    val defaultItems = IndexedSeq("列表".clusterRouteMenuItem(cluster))
     
     val items = {
       if(applicationFeatures.features(KMTopicManagerFeature))
-        defaultItems.+:("Create".clusterRouteMenuItem(cluster))
+        defaultItems.+:("创建".clusterRouteMenuItem(cluster))
       else
         defaultItems
     }
 
-    Option(Menu("Topic", items, None))
+    Option(Menu("主题", items, None))
   }
   
   private[this] def brokersMenu(cluster: String) : Option[Menu] = {
-    Option("Brokers".clusterMenu(cluster))
+    Option("Broker列表".clusterMenu(cluster))
   }
   
   private[this] def preferredReplicaElectionMenu(cluster: String) : Option[Menu] = {
-    Option("Preferred Replica Election".clusterMenu(cluster))
+    Option("首选副本选举".clusterMenu(cluster))
   }
   
   private[this] def reassignPartitionsMenu(cluster: String) : Option[Menu] = {
-    Option("Reassign Partitions".clusterMenu(cluster))
+    Option("重新分配分区".clusterMenu(cluster))
   }
 
   private[this] def consumersMenu(cluster: String) : Option[Menu] = {
-    Option("Consumers".clusterMenu(cluster))
+    Option("消费者列表".clusterMenu(cluster))
   }
   
   private[this] def logKafkaMenu(cluster: String, 
                                  clusterFeatures: ClusterFeatures) : Option[Menu] = {
     if (clusterFeatures.features(KMLogKafkaFeature)) {
       Option(Menu("Logkafka", IndexedSeq(
-        "List Logkafka".clusterRouteMenuItem(cluster),
-        "Create Logkafka".clusterRouteMenuItem(cluster)),
+        "Logkafka列表".clusterRouteMenuItem(cluster),
+        "创建Logkafka".clusterRouteMenuItem(cluster)),
                   None))
     } else None
   }
@@ -80,13 +80,13 @@ class Menus(implicit applicationFeatures: ApplicationFeatures) {
   }
   
   def indexMenu = {
-    val defaultItems = IndexedSeq("List".baseRouteMenuItem)
+    val defaultItems = IndexedSeq("列表".baseRouteMenuItem)
     val items = {
       if(applicationFeatures.features(KMClusterManagerFeature))
-        defaultItems.+:("Add Cluster".baseRouteMenuItem)
+        defaultItems.+:("添加集群".baseRouteMenuItem)
       else
         defaultItems
     }
-    IndexedSeq(Menu("Cluster", items, None))
+    IndexedSeq(Menu("集群", items, None))
   }
 }

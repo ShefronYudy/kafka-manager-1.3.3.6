@@ -7,7 +7,7 @@
 )(implicit af: features.ApplicationFeatures, messages: play.api.i18n.Messages, menus: models.navigation.Menus)
 
 @theMenu = {
-    @views.html.navigation.clusterMenu(cluster,"Brokers","",menus.clusterMenus(cluster)(
+    @views.html.navigation.clusterMenu(cluster,"Broker列表","",menus.clusterMenus(cluster)(
         errorOrBrokerView.toOption.map(_.clusterContext.clusterFeatures).getOrElse(kafka.manager.features.ClusterFeatures.default)))
 }
 
@@ -24,9 +24,9 @@
 }
 
 @main(
-    "Broker View",
+    "Broker视图",
     menu = theMenu,
-    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withNamedViewAndCluster("Broker View",cluster,brokerId.toString)),
+    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withNamedViewAndCluster("Broker视图",cluster,brokerId.toString)),
     scripts=brokerScripts) {
 <div class="col-md-12 un-pad-me">
     <div class="panel panel-default">

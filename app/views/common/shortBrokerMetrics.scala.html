@@ -4,10 +4,10 @@
 
 <table class="table">
     <tr>
-      <th>Broker </th>
-      <th>Messages in /sec</th>
-      <th>Bytes in /sec</th>
-      <th>Bytes out /sec</th>
+      <th>代理Broker </th>
+      <th>写入消息/秒</th>
+      <th>写入字节/秒</th>
+      <th>输出字节/秒</th>
     </tr>
   @brokersViews.zipWithIndex.map { case (brokerView, idx) =>
     @if(brokerView.clusterContext.clusterFeatures.features(kafka.manager.features.KMJMXMetricsFeature)) {
@@ -42,10 +42,10 @@
 
 <table class="table">
   <tr>
-    <th>Broker </th>
-    <th>Bytes rejected /sec</th>
-    <th>Failed fetch request /sec</th>
-    <th>Failed produce request /sec</th>
+    <th>代理Broker </th>
+    <th>拒收字节/秒</th>
+    <th>读取失败请求/秒</th>
+    <th>生产失败请求/秒</th>
   </tr>
   @brokersViews.zipWithIndex.map { case (brokerView, idx) =>
   @if(brokerView.clusterContext.clusterFeatures.features(kafka.manager.features.KMJMXMetricsFeature)) {

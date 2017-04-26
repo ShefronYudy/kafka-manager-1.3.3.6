@@ -2,16 +2,16 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Rate</th>
-      <th>Mean</th>
-      <th>1&nbsp;min</th>
-      <th>5&nbsp;min</th>
-      <th>15&nbsp;min</th>
+      <th>比率</th>
+      <th>平均值</th>
+      <th>1&nbsp;分钟</th>
+      <th>5&nbsp;分钟</th>
+      <th>15&nbsp;分钟</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Messages in /sec</td>
+      <td>接收消息/秒</td>
       <td>
         <span class="badge">@brokerMetrics.map(_.messagesInPerSec.formatMeanRate)</span>
       </td>
@@ -26,7 +26,7 @@
       </td>
     <tr>
     <tr>
-      <td>Bytes in /sec</td>
+      <td>接收字节/秒</td>
       <td>
         <span class="badge">@brokerMetrics.map(_.bytesInPerSec.formatMeanRate)</span>
       </td>
@@ -41,7 +41,7 @@
       </td>
     <tr>
     <tr>
-      <td>Bytes out /sec</td>
+      <td>输出字节/秒</td>
       <td>
         <span class="badge">@brokerMetrics.map(_.bytesOutPerSec.formatMeanRate)</span>
       </td>
@@ -56,7 +56,7 @@
       </td>
     <tr>
     <tr>
-      <td>Bytes rejected /sec</td>
+      <td>拒收字节/秒</td>
       <td>
         <span class="badge">@brokerMetrics.map(_.bytesRejectedPerSec.formatMeanRate)</span>
       </td>
@@ -71,7 +71,7 @@
       </td>
     <tr>
     <tr>
-      <td>Failed fetch request /sec</td>
+      <td>读取失败请求/秒</td>
       <td>
         <span class="badge">@brokerMetrics.map(_.failedFetchRequestsPerSec.formatMeanRate)</span>
       </td>
@@ -86,7 +86,7 @@
       </td>
     <tr>
     <tr>
-      <td>Failed produce request /sec</td>
+      <td>生产失败请求/秒</td>
       <td>
         <span class="badge">@brokerMetrics.map(_.failedProduceRequestsPerSec.formatMeanRate)</span>
       </td>

@@ -12,27 +12,27 @@
 )(implicit af: features.ApplicationFeatures, messages: play.api.i18n.Messages, menus: models.navigation.Menus)
 
 @theMenu = {
-    @views.html.navigation.clusterMenu(cluster,"Topic","",menus.clusterMenus(cluster)(
+    @views.html.navigation.clusterMenu(cluster,"主题","",menus.clusterMenus(cluster)(
         errorOrTopicIdentity.toOption.map(_.clusterContext.clusterFeatures).getOrElse(kafka.manager.features.ClusterFeatures.default)))
 }
 
 @main(
-    "Topic Delete Confirm",
+    "Topic删除确认",
     menu = theMenu,
-    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withNamedViewAndCluster("Topic Delete Confirm",cluster,topic))) {
+    breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withNamedViewAndCluster("Topic删除确认",cluster,topic))) {
 <div class="col-md-12 un-pad-me">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3><button type="button" class="btn btn-link" onclick="goBack()"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>@topic</h3>
         </div>
-        <h3>Are you sure you want to delete @topic?</h3></br></br>
+        <h3>您确定删除 @topic?</h3></br></br>
         <div class="row">
-            <div class="col-md-3"><button type="button" class="btn btn-primary btn-block" onclick="goBack()">No</button></div>
+            <div class="col-md-3"><button type="button" class="btn btn-primary btn-block" onclick="goBack()">取消</button></div>
             <div class="col-md-2">
                 @b3.form(routes.Topic.handleDeleteTopic(cluster, topic)) {
                     <fieldset>
                         @b3.hidden("topic",topic)
-                        @b3.submit('class -> "btn btn-primary btn-block"){ Delete Topic }
+                        @b3.submit('class -> "btn btn-primary btn-block"){ 删除Topic }
                     </fieldset>
                 }
             </div>
